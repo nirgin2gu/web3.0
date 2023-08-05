@@ -4,9 +4,38 @@ const formEl = document.querySelector("form");
 const inputEl = document.getElementById("search-input");
 const searchResults = document.querySelector(".search-results");
 const showMore = document.getElementById("show-more-button");
+const imageContainer = document.getElementById("imageContainer");
+const imageDescriptionInput = document.getElementById('imageDescription');
 
 let inputData = "";
 let page = 1;
+
+function addImage() {
+  const fileInput = document.getElementById('fileInput');
+  
+
+  if (fileInput.files && fileInput.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const image = document.createElement('img');
+      image.src = e.target.result;
+      imageContainer.appendChild(image);
+
+      const imageDescription = imageDescriptionInput.value;
+      const descriptionPara = document.createElement('p');
+
+      const descriptionLink = document.createElement('a');
+      descriptionLink.href = `https://unsplash.com/s/photos/${encodeURIComponent(imageDescription)}`;
+      descriptionLink.textContent = imageDescription;
+      descriptionPara.appendChild(descriptionLink);
+
+     
+      imageContainer.appendChild(descriptionPara);
+    };
+    reader.readAsDataURL(fileInput.files[0]);
+  }
+}
 
 async function searchImages() {
     inputData = inputEl.value;

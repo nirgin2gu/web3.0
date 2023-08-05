@@ -15,6 +15,14 @@
         <button id="search-button">Search</button>
     </form>
 
+            <div class="search-result">
+        <input type="file" id="fileInput" placeholder="Add another picture" accept="image/*">
+        <input type="text" id="imageDescription" placeholder="add a description">
+        <button onclick="addImage()" id="search-button">Add</button>
+        <div id="imageContainer"></div>
+        
+            </div>
+
     <div class="search-results">
         <div class="search-result">
             <img 
@@ -37,11 +45,13 @@
             <a href="https://unsplash.com/photos/a-small-dog-laying-on-top-of-an-orange-blanket-hvNEoUFSEno"
             target="_blank" >Dog</a>
         </div>
+
+      
     </div>
 
     <button id="show-more-button">Show more</button>
 
-    <script> src ="script.js"</script>
+    <script src ="script.js"></script>
     
 </body>
 </html>
